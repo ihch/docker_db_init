@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+    # env_file: .env
+    environment:
+      MYSQL_DATABASE: "test_user"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
